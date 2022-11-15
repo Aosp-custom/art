@@ -43,6 +43,9 @@ art_cc_binary {
             shared_libs: [
                 "libsigchain",
             ],
+            lto: {
+                thin: true,
+            },
         },
         linux: {
             ldflags: ["-Wl,--export-dynamic"],
@@ -53,6 +56,7 @@ art_cc_binary {
             whole_static_libs: ["libsigchain"],
         },
     },
+    whole_program_vtables: true, // Requires LTO
 
     multilib: {
         lib32: {
